@@ -10,7 +10,7 @@ onready var _logo = $TextureRect
 func _ready():
 	if OS.has_feature("debug"):
 		call_deferred("_on_fade_out_done")
-		#return
+		return
 		
 	var tween = Tween.new()
 	add_child(tween)
@@ -27,4 +27,4 @@ func _on_fade_in_done():
 	tween.start()
 
 func _on_fade_out_done():
-	emit_signal("done")
+	get_tree().change_scene("res://contexts/pregame/scenes/TitleScene.tscn")
