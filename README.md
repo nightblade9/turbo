@@ -15,4 +15,5 @@ Current project template is for Godot v3.4.4.
 
 ## Display ##
 
-- The template window size is 720p; this allows for relatively safe deployment to HTML5 (in terms of user resolution). You can update it to 1080p at any time.
+- The template window size is 720p; this allows for relatively safe deployment to HTML5 (in terms of user resolution). To better support desktop and console platforms, you can update it to 1080p at any time. 
+- To make the resolution change as seamless as possible, use `anchor` properties and `Control` nodes to position HUD elements
