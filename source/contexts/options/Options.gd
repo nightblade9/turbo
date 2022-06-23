@@ -2,6 +2,7 @@ extends Resource
 
 const _OPTIONS_FILE_NAME = "user://options.tres"
 
+# Sane defaults for when the user hasn't saved these yet
 export var bgm_volume:float = 1.0
 export var ambience_volume:float = 1.0
 export var sfx_volume:float = 1.0
@@ -17,5 +18,4 @@ static func load_data() -> Resource:
 	if ResourceLoader.exists(_OPTIONS_FILE_NAME):
 		return load(_OPTIONS_FILE_NAME)
 	
-	# Returns a new instance
-	return load("res://contexts/options/Options.gd").new()
+	return null

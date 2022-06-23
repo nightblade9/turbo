@@ -18,9 +18,13 @@ onready var _screen_shake_toggle = $WindowDialog/MarginContainer/VBoxContainer/S
 
 signal close()
 
-var _options:Options = Options.load_data()
+var _options:Options
 
 func _ready():
+	_options = Options.load_data()
+	if _options == null:
+		_options = Options.new()
+		
 	# Update UIs to match persisted options
 	_update_bus_volumes_and_uis()
 	
