@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Turbo"
-run/main_scene="res://contexts/pregame/scenes/SplashScene.tscn"
+run/main_scene="res://contexts/pregame/scenes/GameLoaderScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
