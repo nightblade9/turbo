@@ -1,10 +1,21 @@
 # Turbo
 
-Batteries-included template for 2D pixel-art web and desktop Godot games.
+"Batteries-included" template Godot project for 2D pixel-art web (and desktop) Godot games. Includes:
+
+- Fancy cross-fades between scenes
+- Persistent options with pre-baked settings (volumes, screen shake, invincibility)
+- Save scene with save slots
+- A game loading bar
+- Gamepad support
+- Splash screen
+- Initialize scenes and pass data to them pre-`_ready` when changing scenes
+- Default one-handed controls (WASD)
 
 Current project template is for Godot v3.4.4.
 
 # Usage
+
+In general, you want to clone the project, and use that as your starting-point, customizing scenes to your liking. You should not plan to upgrade to a newer version of Turbo during your project (it's not easy to do so without overriding and losing your changes).
 
 ## Scene Transitions
 
