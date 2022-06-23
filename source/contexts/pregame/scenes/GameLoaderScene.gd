@@ -1,8 +1,6 @@
 extends Control
 
-onready var _percent_label = $MarginContainer/VBoxContainer/PercentLabel
-
-const _LOADING_MESSAGE:String = "Loading ... %s%%"
+onready var _progress_bar = $MarginContainer/VBoxContainer/ProgressBar
 
 func _ready():
 	var loader = ResourceLoader.load_interactive("res://contexts/pregame/scenes/SplashScene.tscn")
@@ -11,12 +9,12 @@ func _ready():
 		var error = loader.poll()
 		if error == ERR_FILE_EOF:
 			# loading complete
-			_percent_label.text = _LOADING_MESSAGE % str(100)
+			_progress_bar.value = 100
 			yield(get_tree(), "idle_frame")
 			var packed_scene = loader.get_resource()
 			get_tree().change_scene_to(packed_scene)
 		elif error == OK:
 			# Still loading ...
 			var progress_percent = 100 * loader.get_stage() / loader.get_stage_count()
-			_percent_label.text = _LOADING_MESSAGE % progress_percent
+			_progress_bar.value = progress_percent
 			yield(get_tree(), "idle_frame")
