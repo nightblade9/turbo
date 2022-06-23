@@ -1,7 +1,5 @@
 extends Control
 
-signal done()
-
 const _FADE_SECONDS:float = 1.0
 const _WAIT_SECONDS:float = 3.3
 
