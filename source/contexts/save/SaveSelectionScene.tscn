@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://contexts/save/SaveSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://contexts/save/SaveSelectionScene.gd" type="Script" id=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -22,26 +23,4 @@ margin_bottom = 704.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
-margin_right = 1248.0
-margin_bottom = 608.0
 alignment = 1
-
-[node name="Control" parent="MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1248.0
-margin_bottom = 200.0
-
-[node name="Control2" parent="MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 204.0
-margin_right = 1248.0
-margin_bottom = 404.0
-
-[node name="Control3" parent="MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 408.0
-margin_right = 1248.0
-margin_bottom = 608.0
