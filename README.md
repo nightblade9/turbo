@@ -15,6 +15,8 @@ Current project template is for Godot v3.4.4.
 
 # Usage
 
+The intended workflow is to use Turbo to quickly prototype your game, publish to HTML5, market it, and iterate. This is why it includes all the fixings to make a "full-fledged" game, including title screen, saving support, etc.
+
 In general, you want to clone the project, and use that as your starting-point, customizing scenes to your liking. You should not plan to upgrade to a newer version of Turbo during your project (it's not easy to do so without overriding and losing your changes).
 
 ## Scene Transitions
