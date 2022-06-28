@@ -21,7 +21,8 @@ In general, you want to clone the project, and use that as your starting-point, 
 
 ## Scene Transitions
 
-- To change scenes via a fancy cross-fade, Call `SceneManager.change_scene_to(packed_scene:PackedScene)` with `packed_scene` being either `load(...)` or `preload(...)`
+- To change scenes via a fancy cross-fade, Call `SceneManager.change_scene_to(packed_scene:PackedScene, fade_image:String)` with `packed_scene` being either `load(...)` or `preload(...)`
+- For the fade image, pick any of the filenames out of `addons/transitions/images` and specify the filename, e.g. `swirl`. For more options, including custom images, see the [Godot Fancy Scene Changes repo](https://github.com/nightblade9/godot-fancy-scene-changes)
 - If you want to execute some logic before the `_ready` function on the new scene is called, add an `func initialize(params:Dictionary = {})` method to it, and call `SceneManager.change_scene_to(packed_scene, {... params go here ...})`, passing in the dictionary of parameters.
 
 # Limitations
