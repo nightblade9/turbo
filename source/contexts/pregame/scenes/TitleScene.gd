@@ -1,12 +1,12 @@
 extends Control
 
-const JoypadNavigator = preload("res://scripts/GamepadNavigator.gd")
+const GamepadNavigator = preload("res://scripts/GamepadNavigator.gd")
 const OptionsDialog = preload("res://contexts/options/OptionsDialog.tscn")
 
-var _joypad_navigator = JoypadNavigator.new()
+var _gamepad_navigator = GamepadNavigator.new()
 
 func _ready():
-	add_child(_joypad_navigator)
+	add_child(_gamepad_navigator)
 	
 func _on_OptionsButton_pressed() -> void:
 	var options_dialog = OptionsDialog.instance()
