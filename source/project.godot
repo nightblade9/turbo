@@ -33,6 +33,7 @@ enabled=PoolStringArray( "res://addons/transitions/plugin.cfg" )
 
 [gui]
 
+theme/custom="res://theme/GlobalTheme.tres"
 theme/custom_font="res://theme/DefaultFont.tres"
 
 [input]
