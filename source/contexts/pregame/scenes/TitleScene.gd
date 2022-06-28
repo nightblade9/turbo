@@ -1,16 +1,8 @@
 extends Control
 
+const OptionsDialog = preload("res://contexts/options/OptionsDialog.tscn")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_OptionsButton_pressed() -> void:
+	var options_dialog = OptionsDialog.instance()
+	add_child(options_dialog)
+	options_dialog.popup()
