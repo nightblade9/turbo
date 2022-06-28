@@ -8,6 +8,7 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="WindowDialog" type="WindowDialog" parent="."]
+pause_mode = 2
 visible = true
 margin_right = 651.0
 margin_bottom = 357.0
@@ -33,7 +34,7 @@ margin_right = 624.0
 margin_bottom = 39.0
 text = "Background Ambience Volume"
 
-[node name="AmbienceVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer"]
+[node name="AmbienceVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 margin_top = 43.0
 margin_right = 624.0
 margin_bottom = 107.0
@@ -51,7 +52,7 @@ margin_right = 624.0
 margin_bottom = 150.0
 text = "Sound Effects Volume"
 
-[node name="SoundEffectsVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer"]
+[node name="SoundEffectsVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 margin_top = 154.0
 margin_right = 624.0
 margin_bottom = 218.0
@@ -68,13 +69,13 @@ margin_top = 222.0
 margin_right = 624.0
 margin_bottom = 226.0
 
-[node name="InvincibilityCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer"]
+[node name="InvincibilityCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 margin_top = 230.0
 margin_right = 624.0
 margin_bottom = 277.0
 text = "Invincibility"
 
-[node name="ScreenShakeCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer"]
+[node name="ScreenShakeCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 margin_top = 281.0
 margin_right = 624.0
 margin_bottom = 328.0

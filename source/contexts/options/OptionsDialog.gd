@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+const GamepadNavigator = preload("res://scripts/GamepadNavigator.gd")
 const Options = preload("res://contexts/options/Options.gd")
 
 const AMBIENCE_BUS_NAME = "BGSE"
@@ -18,9 +19,12 @@ onready var _screen_shake_toggle = $WindowDialog/MarginContainer/VBoxContainer/S
 
 signal close()
 
+var _gamepad_navigator = GamepadNavigator.new()
 var _options:Options
 
 func _ready():
+	add_child(_gamepad_navigator)
+	
 	_options = Options.load_data()
 	if _options == null:
 		_options = Options.new()
