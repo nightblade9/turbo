@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://contexts/options/OptionsDialog.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [node name="Options" type="CanvasLayer"]
 pause_mode = 2
@@ -37,48 +36,42 @@ text = "Background Ambience Volume"
 [node name="AmbienceVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 margin_top = 43.0
 margin_right = 624.0
-margin_bottom = 107.0
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
+margin_bottom = 59.0
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
 [node name="SfxVolume" type="Label" parent="WindowDialog/MarginContainer/VBoxContainer"]
-margin_top = 111.0
+margin_top = 63.0
 margin_right = 624.0
-margin_bottom = 150.0
+margin_bottom = 102.0
 text = "Sound Effects Volume"
 
 [node name="SoundEffectsVolumeSlider" type="HSlider" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-margin_top = 154.0
+margin_top = 106.0
 margin_right = 624.0
-margin_bottom = 218.0
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
+margin_bottom = 122.0
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
 [node name="HSeparator" type="HSeparator" parent="WindowDialog/MarginContainer/VBoxContainer"]
-margin_top = 222.0
+margin_top = 126.0
 margin_right = 624.0
-margin_bottom = 226.0
+margin_bottom = 130.0
 
 [node name="InvincibilityCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-margin_top = 230.0
+margin_top = 134.0
 margin_right = 624.0
-margin_bottom = 277.0
+margin_bottom = 181.0
 text = "Invincibility"
 
 [node name="ScreenShakeCheck" type="CheckButton" parent="WindowDialog/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-margin_top = 281.0
+margin_top = 185.0
 margin_right = 624.0
-margin_bottom = 328.0
+margin_bottom = 232.0
 pressed = true
 text = "Screen Shake"
 
