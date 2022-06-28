@@ -5,3 +5,5 @@ bg_color = Color( 0.24, 0.48, 0.6, 1 )
 
 [resource]
 Button/styles/focus = SubResource( 1 )
+CheckButton/styles/focus = SubResource( 1 )
+HSlider/styles/slider = SubResource( 1 )
