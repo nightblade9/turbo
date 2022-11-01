@@ -28,10 +28,14 @@ func _ready():
 		me.focus_neighbour_top = previous.get_path()
 
 func _unhandled_input(event):
+	# On first joypad keypress/motion or first keyboard keypress, if we haven't
+	# yet given focus to a control (e.g. a menu button), grab focus on the first
+	# marked control (e.g. first button in the title menu).
 	if _selected_button_index == -1 and \
 		(
-			(event is InputEventJoypadMotion or event is InputEventJoypadButton) or \
-			(event is InputEventKey)
+			event is InputEventJoypadMotion or \
+			event is InputEventJoypadButton or \
+			event is InputEventKey
 		):
 		_selected_button_index = 0
 		var current_button:Control = _controls[_selected_button_index]
