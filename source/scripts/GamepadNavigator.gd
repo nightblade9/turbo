@@ -53,7 +53,6 @@ func _ready():
 	if _selected_button_index == -1:
 		_selected_button_index = 0
 		_controls[0].grab_focus()
-		print("focusin' on %s" % _controls[0])
 		
 func _get_all_descendents_of_parent_in_group(tree_root:Node) -> void:
 	for node in tree_root.get_children():
