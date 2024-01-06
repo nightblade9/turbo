@@ -1,12 +1,12 @@
 extends Node
 
-func change_scene_to(packed_scene:PackedScene,
+func change_scene_to_packed(packed_scene:PackedScene,
 	fade_filename:String = "",
 	fade_time:float = 1.0,
 	params = {}
 ) -> void:
 	
-	var instance = packed_scene.instance()
+	var instance = packed_scene.instantiate()
 	
 	if instance.has_method("initialize"):
 		instance.initialize(params)

@@ -4,9 +4,9 @@ const SaveData = preload("res://contexts/save/SaveData.gd")
 
 const _GAME_TIME_LABEL:String = "%s hour(s), %s minute(s)"
 
-onready var _slot_label = $MarginContainer/VBoxContainer/SlotLabel
-onready var _main_label = $MarginContainer/VBoxContainer/CenterContainer/MainLabel
-onready var _time_label = $MarginContainer/VBoxContainer/TimeLabel
+@onready var _slot_label = $MarginContainer/VBoxContainer/SlotLabel
+@onready var _main_label = $MarginContainer/VBoxContainer/CenterContainer/MainLabel
+@onready var _time_label = $MarginContainer/VBoxContainer/TimeLabel
 
 # Called after _ready
 func initialize(save_slot:String, save_data:SaveData) -> void:

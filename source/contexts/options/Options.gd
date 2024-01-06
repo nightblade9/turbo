@@ -3,11 +3,11 @@ extends Resource
 const _OPTIONS_FILE_NAME = "user://options.tres"
 
 # Sane defaults for when the user hasn't saved these yet
-export var bgm_volume:float = 1.0
-export var ambience_volume:float = 1.0
-export var sfx_volume:float = 1.0
-export var invincible:bool = false
-export var screen_shake:bool = true
+@export var bgm_volume:float = 1.0
+@export var ambience_volume:float = 1.0
+@export var sfx_volume:float = 1.0
+@export var invincible:bool = false
+@export var screen_shake:bool = true
 
 func save_data():
 	var result = ResourceSaver.save(_OPTIONS_FILE_NAME, self)

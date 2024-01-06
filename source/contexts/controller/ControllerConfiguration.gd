@@ -1,6 +1,6 @@
 extends Control
 
-onready var _label = $Label
+@onready var _label = $Label
 
 func _unhandled_input(event):
 	if event is InputEventJoypadButton and event.is_pressed():

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/nightingale.wav-91c7acd4d9eb33aba5ee1b75149ebb44.sample"
+type="AudioStreamWAV"
+uid="uid://b2h7afasye0gy"
+path="res://.godot/imported/nightingale.wav-91c7acd4d9eb33aba5ee1b75149ebb44.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/nightingale.wav"
-dest_files=[ "res://.import/nightingale.wav-91c7acd4d9eb33aba5ee1b75149ebb44.sample" ]
+dest_files=["res://.godot/imported/nightingale.wav-91c7acd4d9eb33aba5ee1b75149ebb44.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

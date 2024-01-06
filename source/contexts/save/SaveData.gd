@@ -4,7 +4,7 @@ const _SAVE_FILE_NAME = "user://save%s.tres"
 
 # Put your save fields here, as export variables. They can be native
 # types, or resources (for recursive saving).
-export var game_time_seconds:int = 0
+@export var game_time_seconds:int = 0
 
 func save_data(save_slot:String) -> void:
 	var save_file = _SAVE_FILE_NAME % save_slot

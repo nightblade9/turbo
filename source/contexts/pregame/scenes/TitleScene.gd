@@ -9,7 +9,7 @@ func _ready():
 	add_child(_gamepad_navigator)
 	
 func _on_OptionsButton_pressed() -> void:
-	var options_dialog = OptionsDialog.instance()
+	var options_dialog = OptionsDialog.instantiate()
 	add_child(options_dialog)
 	options_dialog.popup()
 

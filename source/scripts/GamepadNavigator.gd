@@ -26,7 +26,7 @@ func _init(select_first:bool = true):
 
 func _ready():
 	if _DEBUG_FOCUS:
-		get_viewport().connect("gui_focus_changed", self, "_on_focus_changed")
+		get_viewport().connect("gui_focus_changed", Callable(self, "_on_focus_changed"))
 		
 	_controls.clear()
 	_selected_button_index = -1

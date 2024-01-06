@@ -6,16 +6,16 @@ const Options = preload("res://contexts/options/Options.gd")
 const AMBIENCE_BUS_NAME = "BGSE"
 const SFX_BUS_NAME = "SFX"
 
-onready var _window_dialog = $WindowDialog
+@onready var _window_dialog = $Window
 
-onready var _bgse_volume = $WindowDialog/MarginContainer/VBoxContainer/BgseVolume
-onready var _sfx_volume = $WindowDialog/MarginContainer/VBoxContainer/SfxVolume
+@onready var _bgse_volume = $Window/MarginContainer/VBoxContainer/BgseVolume
+@onready var _sfx_volume = $Window/MarginContainer/VBoxContainer/SfxVolume
 
-onready var _ambience_slider = $WindowDialog/MarginContainer/VBoxContainer/AmbienceVolumeSlider
-onready var _sfx_slider = $WindowDialog/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider
+@onready var _ambience_slider = $Window/MarginContainer/VBoxContainer/AmbienceVolumeSlider
+@onready var _sfx_slider = $Window/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider
 
-onready var _invincible_toggle = $WindowDialog/MarginContainer/VBoxContainer/InvincibilityCheck
-onready var _screen_shake_toggle = $WindowDialog/MarginContainer/VBoxContainer/ScreenShakeCheck
+@onready var _invincible_toggle = $Window/MarginContainer/VBoxContainer/InvincibilityCheck
+@onready var _screen_shake_toggle = $Window/MarginContainer/VBoxContainer/ScreenShakeCheck
 
 signal close()
 
@@ -35,13 +35,13 @@ func _ready():
 	_ambience_slider.value = _options.ambience_volume
 	_sfx_slider.value = _options.sfx_volume
 	
-	_invincible_toggle.pressed = _options.invincible
-	_screen_shake_toggle.pressed = _options.screen_shake
+	_invincible_toggle.button_pressed = _options.invincible
+	_screen_shake_toggle.button_pressed = _options.screen_shake
 
 func popup():
 	_window_dialog.popup_centered()
-	_invincible_toggle.pressed = _options.invincible
-	_screen_shake_toggle.pressed = _options.screen_shake
+	_invincible_toggle.button_pressed = _options.invincible
+	_screen_shake_toggle.button_pressed = _options.screen_shake
 	
 	# Pause game on open
 	get_tree().paused = true
@@ -90,5 +90,5 @@ func _update_volume_uis():
 	_sfx_volume.text = "Sound Effects Volume (%s%%)" % [int(_options.sfx_volume * 100)]
 	
 func update_audio_volume(bus_name:String, value:float):
-	var decibels = linear2db(value)
+	var decibels = linear_to_db(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), decibels)
