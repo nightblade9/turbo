@@ -1,15 +1,15 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://6w7q2lxkpxxw"]
 
-[ext_resource path="res://assets/images/ui/hslider-grabber.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/images/ui/hslider-grabber-selected.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/images/ui/hslider-grabber-disabled.png" type="Texture2D" id=3]
+[ext_resource type="Texture2D" uid="uid://s8pvllfxx6kb" path="res://assets/images/ui/hslider-grabber.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://rwq460bqn5fx" path="res://assets/images/ui/hslider-grabber-selected.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cchbj4eo8gny5" path="res://assets/images/ui/hslider-grabber-disabled.png" id="3"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.24, 0.48, 0.6, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.24, 0.48, 0.6, 1)
 
 [resource]
-Button/styles/focus = SubResource( 1 )
-CheckButton/styles/focus = SubResource( 1 )
-HSlider/icons/grabber = ExtResource( 1 )
-HSlider/icons/grabber_disabled = ExtResource( 3 )
-HSlider/icons/grabber_highlight = ExtResource( 2 )
+Button/styles/focus = SubResource("1")
+CheckButton/styles/focus = SubResource("1")
+HSlider/icons/grabber = ExtResource("1")
+HSlider/icons/grabber_disabled = ExtResource("3")
+HSlider/icons/grabber_highlight = ExtResource("2")

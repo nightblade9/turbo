@@ -1,19 +1,29 @@
 extends Control
 
-@onready var _progress_bar = $MarginContainer/VBoxContainer/ProgressBar
+# Via: https://www.gotut.net/loading-screen-in-godot-4/
 
-func _ready():
-	var loader = ResourceLoader.load_threaded_request("res://contexts/pregame/scenes/SplashScene.tscn")
+const target_scene_path:String = "res://contexts/pregame/scenes/SplashScene.tscn"
+
+var _loading_status : int
+var _progress : Array[float]
+
+@onready var _progress_bar:ProgressBar = %ProgressBar
+
+func _ready() -> void:
+	# Request to load the target scene:
+	ResourceLoader.load_threaded_request(target_scene_path)
 	
-	while true:
-		var error = loader.poll()
-		if error == ERR_FILE_EOF:
-			# loading complete
-			var packed_scene = loader.get_resource()
-			get_tree().change_scene_to_packed(packed_scene)
-			break
-		elif error == OK:
-			# Still loading ...
-			var progress_percent = 100 * loader.get_stage() / loader.get_stage_count()
-			_progress_bar.value = progress_percent
-		await get_tree().idle_frame
+func _process(_delta: float) -> void:
+	# Update the status:
+	_loading_status = ResourceLoader.load_threaded_get_status(target_scene_path, _progress)
+	
+	# Check the loading status:
+	match _loading_status:
+		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			_progress_bar.value = _progress[0] * 100 # Change the ProgressBar value
+		ResourceLoader.THREAD_LOAD_LOADED:
+			# When done loading, change to the target scene:
+			get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(target_scene_path))
+		ResourceLoader.THREAD_LOAD_FAILED:
+			# Well some error happend:
+			print("Error. Could not load Resource")

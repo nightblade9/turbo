@@ -10,7 +10,7 @@ const _OPTIONS_FILE_NAME = "user://options.tres"
 @export var screen_shake:bool = true
 
 func save_data():
-	var result = ResourceSaver.save(_OPTIONS_FILE_NAME, self)
+	var result = ResourceSaver.save(self, _OPTIONS_FILE_NAME)
 	if result != OK:
 		push_error("Failed to save data! Result was: %s" % result)
 	

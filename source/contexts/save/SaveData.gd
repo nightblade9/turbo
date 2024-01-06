@@ -8,7 +8,7 @@ const _SAVE_FILE_NAME = "user://save%s.tres"
 
 func save_data(save_slot:String) -> void:
 	var save_file = _SAVE_FILE_NAME % save_slot
-	var result = ResourceSaver.save(save_file, self)
+	var result = ResourceSaver.save(self, save_file)
 	if result != OK:
 		push_error("Failed to save data to %s! Result was: %s" % [save_slot, result])
 	
