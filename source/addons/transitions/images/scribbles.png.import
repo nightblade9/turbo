@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djudlvld6i0ap"
-path="res://.godot/imported/circle-inverted.png-504df33da7f0e3194c8c0d03daf3fa19.ctex"
+uid="uid://4m27ebdpsqai"
+path="res://.godot/imported/scribbles.png-579a1f91e9706539b690a5647557b576.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/transitions/images/circle-inverted.png"
-dest_files=["res://.godot/imported/circle-inverted.png-504df33da7f0e3194c8c0d03daf3fa19.ctex"]
+source_file="res://addons/transitions/images/scribbles.png"
+dest_files=["res://.godot/imported/scribbles.png-579a1f91e9706539b690a5647557b576.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djudlvld6i0ap"
-path="res://.godot/imported/circle-inverted.png-504df33da7f0e3194c8c0d03daf3fa19.ctex"
+uid="uid://bp41jo5ii8w3"
+path="res://.godot/imported/curtains.png-d01b910c2cd7db2bf28a667b241c5ee4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/transitions/images/circle-inverted.png"
-dest_files=["res://.godot/imported/circle-inverted.png-504df33da7f0e3194c8c0d03daf3fa19.ctex"]
+source_file="res://addons/transitions/images/curtains.png"
+dest_files=["res://.godot/imported/curtains.png-d01b910c2cd7db2bf28a667b241c5ee4.ctex"]
 
 [params]
 

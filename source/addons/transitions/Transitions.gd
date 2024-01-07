@@ -1,17 +1,26 @@
 extends CanvasLayer
 
 signal pre_transition
+signal post_transition
 
 const FadeScene = preload("res://addons/transitions/FadeScene.gd")
 
-var _root:SubViewport
+var _root:Window
 var scene_container:Node: set = _set_scene_container
+var _current_scene:Node = null
 
 enum FadeType {
 	Instant, # immediately change
 	CrossFade, # naively fade in the new scene
 	Blend # alpha blend one into the other using a texture to control the fade
 }
+
+func _ready():
+	_root = get_tree().root
+	# Set the default container to be the root viewport.
+	# This maintains backwards compatability with previous versions.
+	if(scene_container == null):
+		scene_container = _root
 
 func _set_scene_container(new_container:Node):
 	# Allow users to specify their own scene container node.
@@ -30,14 +39,8 @@ func _get_current_scene():
 	
 	push_error("Couldn't ascertain current scene")
 	return null
-			
-func _ready():
-	_root = get_tree().root
-	# Set the default container to be the root viewport.
-	# This maintains backwards compatability with previous versions.
-	scene_container = _root
 
-func change_scene_to_file(new_scene, fade_type, fade_time_seconds:float = 1.0, shader_image:CompressedTexture2D = null) -> void:
+func change_scene_to_instance(new_scene, fade_type, fade_time_seconds:float = 1.0, shader_image:CompressedTexture2D = null) -> void:
 	if new_scene == null:
 		push_error("Can't change scene to null scene!")
 	elif not is_instance_valid(new_scene):
@@ -50,11 +53,11 @@ func change_scene_to_file(new_scene, fade_type, fade_time_seconds:float = 1.0, s
 	_set_scene(new_scene)
 	emit_signal("pre_transition")
 	
-	var coroutine = _common_wait_for_fade(data, fade_type, fade_time_seconds)
-	await coroutine.completed
+	await _common_wait_for_fade(data, fade_type, fade_time_seconds)
 	
 	_common_post_fade(data, new_scene)
-	
+	emit_signal("post_transition")
+
 func _common_pre_fade(fade_type, fade_time_seconds:float, shader_image:CompressedTexture2D = null) -> Array:
 	# NB: Remember spending 8 hours fruitlessly fixing that extra frame in dissolve
 	# fades? The one that's shrank to 1x zoom and (0, 0) on the map?
@@ -75,6 +78,7 @@ func _common_pre_fade(fade_type, fade_time_seconds:float, shader_image:Compresse
 	var sprite = fade_scene.get_node("Sprite2D")
 	sprite.texture = screenshot.texture
 	
+	
 	# If the Godot project has test_width and test-height,  the screenshot will 
 	# be the window size, not the game size, so it won't perfectly match; actual
 	# game will look fine, though. To fix this, scale as needed.
@@ -86,21 +90,21 @@ func _common_pre_fade(fade_type, fade_time_seconds:float, shader_image:Compresse
 	var screenshot_height:float = screenshot.texture.get_height()
 	
 	# correction for changed aspect ratio
-        
+		
 	var default_aspect_ratio:float = game_width / game_height
 	var new_aspect_ratio:float = screenshot_width / screenshot_height
 	var fixed_game_width:float
 	var fixed_game_height:float
 	
 	if(new_aspect_ratio > default_aspect_ratio): # it is wider
-			fixed_game_width = game_width * new_aspect_ratio / default_aspect_ratio
-			fixed_game_height = game_height
-	elif((new_aspect_ratio < default_aspect_ratio)): # it is higher
-			fixed_game_width = game_width
-			fixed_game_height = game_height * (screenshot_height/screenshot_width) / (game_height / game_width)
+		fixed_game_width = game_width * new_aspect_ratio / default_aspect_ratio
+		fixed_game_height = game_height
+	elif(new_aspect_ratio < default_aspect_ratio): # it is higher
+		fixed_game_width = game_width
+		fixed_game_height = game_height * (screenshot_height/screenshot_width) / (game_height / game_width)
 	else: # aspect ratio didn't change
-			fixed_game_width = game_width
-			fixed_game_height = game_height
+		fixed_game_width = game_width
+		fixed_game_height = game_height
 	
 	var sprite_scale = Vector2(fixed_game_width / screenshot_width, fixed_game_height / screenshot_height)
 	sprite.scale = sprite_scale
@@ -114,6 +118,7 @@ func _common_pre_fade(fade_type, fade_time_seconds:float, shader_image:Compresse
 	if fade_type == FadeType.Blend:
 		sprite.material.set_shader_parameter("dissolve_texture", shader_image)
 	
+	screenshot.queue_free() # prevents huge memory leaks on this orphan node
 	return [_root, fade_scene, sprite]
 
 func _common_wait_for_fade(data:Array, fade_type, fade_seconds:float) -> void:
@@ -129,12 +134,9 @@ func _common_wait_for_fade(data:Array, fade_type, fade_seconds:float) -> void:
 		fade_seconds = 0.0
 	
 	if fade_type == FadeType.CrossFade or fade_type == FadeType.Instant:
-		var tween = Tween.new()
-		_root.call_deferred("add_child", tween)
-		await tween.ready
-		tween.interpolate_property(sprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), fade_seconds)
-		tween.start()
-		await tween.tween_completed
+		var tween:Tween = create_tween()
+		tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), fade_seconds)
+		await tween.finished
 	elif fade_type == FadeType.Blend:
 		# wait for shader fade to complete
 		fade_scene.start()
@@ -146,29 +148,27 @@ func _common_wait_for_fade(data:Array, fade_type, fade_seconds:float) -> void:
 # new_scene is either Node2D or PackedScene. #herp #derp
 func _common_post_fade(data:Array, new_scene) -> void:
 	var fade_scene = data[1]
-	if fade_scene in _root:
+	if fade_scene in _root.get_children():
 		_root.remove_child(fade_scene)
 
 func _set_scene(new_scene:Node):
 	# Dispose old scene so we don't get any camera jitters or wierdness.
-	var previous_scene = _get_current_scene()
-	
-	scene_container.remove_child(previous_scene)
-	print("killed previous scene %s" % previous_scene)
+	var previous_scene = _get_current_scene() if (_current_scene == null) else _current_scene
 	previous_scene.queue_free()
 	
-	scene_container.add_child(new_scene)
-	get_tree().current_scene = new_scene
+	if new_scene.get_parent() != scene_container:
+		scene_container.call_deferred("add_child", new_scene)
+		
+	if scene_container == _root:
+		get_tree().call_deferred("set_current_scene", new_scene)
+	
+	_current_scene = new_scene
 
 # Necessary for those buttery-smooth jitter-free fades
 func _take_screenshot():
-	var image:Image = _root.get_texture().get_data()
-	# Flip it on the y-axis (because it's flipped)
-	image.flip_y()
+	var image:Image = _root.get_texture().get_image()
 	
-	var image_texture = ImageTexture.new()
-	image_texture.create_from_image(image)
-	image_texture.flags = 0 # turn off "Filter" so it's pixel perfect
+	var image_texture = ImageTexture.create_from_image(image)
 
 	var sprite = Sprite2D.new()
 	sprite.texture = image_texture
@@ -186,7 +186,7 @@ func _create_fade_scene(texture:CompressedTexture2D) -> Node:
 	canvas.add_child(sprite)
 	
 	var shader_material = ShaderMaterial.new()
-	shader_material.gdshader = load("res://addons/transitions/Dissolve2d.gdshader")
+	shader_material.shader = load("res://addons/transitions/Dissolve2d.gdshader")
 	shader_material.set_shader_parameter("dissolve_texture", texture)
 	sprite.material = shader_material
 	
