@@ -2,6 +2,7 @@ extends Control
 
 const GamepadNavigator = preload("res://scripts/GamepadNavigator.gd")
 const OptionsDialog = preload("res://contexts/options/OptionsDialog.tscn")
+const SaveSelectionScene = preload("res://contexts/save/SaveSelectionScene.tscn")
 
 var _gamepad_navigator = GamepadNavigator.new()
 
@@ -14,8 +15,8 @@ func _on_OptionsButton_pressed() -> void:
 	options_dialog.popup()
 
 func _on_NewGameButton_pressed():
-#	SceneManager.change_scene_to(load("res://contexts/core/CoreGameScene.tscn"), "circle")
-	pass # Replace with function body.
-
+	#FancyFade.wipe_conical(NewGameScene.instantiate())
+	pass
+	
 func _on_ContinueButton_pressed():
-	pass # Replace with function body.
+	FancyFade.cross_fade(SaveSelectionScene.instantiate())
