@@ -16,6 +16,6 @@ func _ready():
 
 		var game_data:SaveData = SaveData.load_data(slot)
 		save_slot.initialize(slot, game_data)
-
+	
 func _on_back_to_title_button_pressed():
 	FancyFade.cross_fade(TitleScene.instantiate())

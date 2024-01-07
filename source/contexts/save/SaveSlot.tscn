@@ -1,59 +1,60 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://c16n2t1tmp8y6"]
 
-[ext_resource path="res://icon.png" type="Texture2D" id=1]
-[ext_resource path="res://theme/HeadingsFont.tres" type="FontFile" id=2]
-[ext_resource path="res://contexts/save/SaveSlot.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bmm16sxc4md27" path="res://icon.png" id="1"]
+[ext_resource type="FontFile" path="res://theme/HeadingsFont.tres" id="2"]
+[ext_resource type="Script" path="res://contexts/save/SaveSlot.gd" id="3"]
 
-[node name="SaveSlot" type="NinePatchRect"]
-self_modulate = Color( 0.494118, 0.494118, 0.494118, 1 )
+[node name="SaveSlot" type="TextureRect"]
+self_modulate = Color(0.494118, 0.494118, 0.494118, 1)
+custom_minimum_size = Vector2(1248, 200)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -680.0
 offset_bottom = -470.0
-custom_minimum_size = Vector2( 1248, 200 )
-texture = ExtResource( 1 )
-patch_margin_left = 32
-patch_margin_top = 32
-patch_margin_right = 32
-patch_margin_bottom = 32
-script = ExtResource( 3 )
+texture = ExtResource("1")
+script = ExtResource("3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_top = 16
 theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1232.0
-offset_bottom = 234.0
+layout_mode = 2
+alignment = 1
 
-[node name="SlotLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_right = 1216.0
-offset_bottom = 39.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="SlotLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Slot 0"
-valign = 2
+
+[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load"
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 43.0
-offset_right = 1216.0
-offset_bottom = 142.0
+layout_mode = 2
 
 [node name="MainLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
-offset_left = 497.0
-offset_right = 718.0
-offset_bottom = 99.0
-theme_override_fonts/font = ExtResource( 2 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 32
 text = "Empty"
-align = 1
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_top = 146.0
-offset_right = 1216.0
-offset_bottom = 185.0
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Game time: 0:00"
-valign = 2
+horizontal_alignment = 1

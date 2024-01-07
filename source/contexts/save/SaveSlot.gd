@@ -1,12 +1,13 @@
-extends NinePatchRect
+extends TextureRect
 
 const SaveData = preload("res://contexts/save/SaveData.gd")
 
 const _GAME_TIME_LABEL:String = "%s hour(s), %s minute(s)"
 
-@onready var _slot_label = $MarginContainer/VBoxContainer/SlotLabel
+@onready var _slot_label = $MarginContainer/VBoxContainer/HBoxContainer/SlotLabel
 @onready var _main_label = $MarginContainer/VBoxContainer/CenterContainer/MainLabel
 @onready var _time_label = $MarginContainer/VBoxContainer/TimeLabel
+@onready var _load_button = $MarginContainer/VBoxContainer/HBoxContainer/LoadButton 
 
 # Called after _ready
 func initialize(save_slot:String, save_data:SaveData) -> void:
@@ -17,8 +18,9 @@ func initialize(save_slot:String, save_data:SaveData) -> void:
 		var hours = minutes / 60
 		minutes = minutes % 60
 		
-		_time_label.text = _GAME_TIME_LABEL % [hours, minutes] # TODO: hours, minutes from game
+		_time_label.text = _GAME_TIME_LABEL % [hours, minutes]
 		_main_label.text = "Actual save data"
 	else:
 		_main_label.text = "Empty"
 		_time_label.visible = false
+		_load_button.visible = false
