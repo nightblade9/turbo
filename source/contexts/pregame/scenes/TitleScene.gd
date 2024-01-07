@@ -15,7 +15,8 @@ func _on_OptionsButton_pressed() -> void:
 	options_dialog.popup()
 
 func _on_NewGameButton_pressed():
-	#FancyFade.wipe_conical(NewGameScene.instantiate())
+	# Implement: start a new game!
+	# FancyFade.wipe_conical(NewGameScene.instantiate())
 	pass
 	
 func _on_ContinueButton_pressed():

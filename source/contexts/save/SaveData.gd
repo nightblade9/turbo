@@ -3,8 +3,8 @@ extends Resource
 
 const _SAVE_FILE_NAME = "user://save%s.tres"
 
-# Put your save fields here, as export variables. They can be native
-# types, or resources (for recursive saving).
+# Implement: put your save fields here, as export variables. They can be native
+# types, or resources (for easy recursive saving).
 @export var game_time_seconds:int = 0
 
 func save_data(save_slot:String) -> void:

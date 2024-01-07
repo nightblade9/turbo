@@ -6,16 +6,18 @@
 - Persistent options with pre-baked settings (volumes, screen shake, invincibility)
 - Save scene with save slots
 - A game loading bar
-- Gamepad support
-- Splash screen
+- Gamepad and keyboard support
+- A splash screen
 - Initialize scenes and pass data to them pre-`_ready` when changing scenes
 - Default one-handed controls (WASD)
 
-Current project template is for Godot v3.4.4.
+Current project template is for Godot v4.x!
 
 # Usage
 
 The intended workflow is to use Turbo to quickly prototype your game, publish to HTML5, market it, and iterate. This is why it includes all the fixings to make a "full-fledged" game, including title screen, saving support, etc.
+
+Look for the `# Implement` comments, and fill in the required functionality (e.g. instantiate a new-game scene in `TitleScene.gd`).
 
 In general, you want to clone the project, and use that as your starting-point, customizing scenes to your liking. You should not plan to upgrade to a newer version of Turbo during your project (it's not easy to do so without overriding and losing your changes).
 
@@ -29,5 +31,5 @@ In general, you want to clone the project, and use that as your starting-point, 
 
 ## Display ##
 
-- The template window size is 720p; this allows for relatively safe deployment to HTML5 (in terms of user resolution). To better support desktop and console platforms, you can update it to 1080p at any time. 
+- The template window size is 720p; this allows for relatively safe deployment to HTML5 (in terms of user resolution). To better support desktop and console platforms, you can update it to 1080p or 540p (with scaling) at any time. 
 - To make the resolution change as seamless as possible, use `anchor` properties and `Control` nodes to position HUD elements

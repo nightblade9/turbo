@@ -22,5 +22,5 @@ func _on_back_to_title_button_pressed():
 	FancyFade.cross_fade(TitleScene.instantiate())
 
 func _on_load_game(save_data:SaveData) -> void:
-	# Load the game!
+	# Implement: load the game!
 	pass
