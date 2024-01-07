@@ -92,3 +92,8 @@ func _on_pop_up_popup_hide():
 	emit_signal("close")
 	# resume game
 	get_tree().paused = false
+
+func _on_close_button_pressed():
+	_on_pop_up_popup_hide()
+	get_parent().remove_child(self)
+	self.queue_free()
