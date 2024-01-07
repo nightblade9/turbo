@@ -38,7 +38,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Slot 0"
 
-[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" groups=["GamepadSelectable"]]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32

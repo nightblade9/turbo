@@ -1,6 +1,6 @@
 extends Control
 
-const SaveData = preload("res://contexts/save/SaveData.gd")
+const GamepadNavigator = preload("res://scripts/GamepadNavigator.gd")
 const SaveSlot = preload("res://contexts/save/SaveSlot.tscn")
 var TitleScene = load("res://contexts/pregame/scenes/TitleScene.tscn")
 
@@ -18,6 +18,8 @@ func _ready():
 		save_slot.initialize(slot, game_data)
 		save_slot.load_game.connect(_on_load_game)
 	
+	add_child(GamepadNavigator.new())
+		
 func _on_back_to_title_button_pressed():
 	FancyFade.cross_fade(TitleScene.instantiate())
 
