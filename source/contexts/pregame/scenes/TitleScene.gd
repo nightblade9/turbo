@@ -8,10 +8,6 @@ var _gamepad_navigator = GamepadNavigator.new()
 func _ready():
 	add_child(_gamepad_navigator)
 	
-func _process(delta):
-	# Just here to prove options pause the game
-	$MarginContainer/VBoxContainer/GamePauseCheck.rotation += (delta * 2)
-	
 func _on_OptionsButton_pressed() -> void:
 	var options_dialog = OptionsDialog.instantiate()
 	add_child(options_dialog)
