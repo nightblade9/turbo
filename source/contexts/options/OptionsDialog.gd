@@ -6,16 +6,16 @@ const Options = preload("res://contexts/options/Options.gd")
 const AMBIENCE_BUS_NAME = "BGSE"
 const SFX_BUS_NAME = "SFX"
 
-@onready var _window_dialog = $Window
+@onready var _popup_dialog = $PopUp
 
-@onready var _bgse_volume = $Window/MarginContainer/VBoxContainer/BgseVolume
-@onready var _sfx_volume = $Window/MarginContainer/VBoxContainer/SfxVolume
+@onready var _bgse_volume = $PopUp/MarginContainer/VBoxContainer/BgseVolume
+@onready var _sfx_volume = $PopUp/MarginContainer/VBoxContainer/SfxVolume
 
-@onready var _ambience_slider = $Window/MarginContainer/VBoxContainer/AmbienceVolumeSlider
-@onready var _sfx_slider = $Window/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider
+@onready var _ambience_slider = $PopUp/MarginContainer/VBoxContainer/AmbienceVolumeSlider
+@onready var _sfx_slider = $PopUp/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider
 
-@onready var _invincible_toggle = $Window/MarginContainer/VBoxContainer/InvincibilityCheck
-@onready var _screen_shake_toggle = $Window/MarginContainer/VBoxContainer/ScreenShakeCheck
+@onready var _invincible_toggle = $PopUp/MarginContainer/VBoxContainer/InvincibilityCheck
+@onready var _screen_shake_toggle = $PopUp/MarginContainer/VBoxContainer/ScreenShakeCheck
 
 signal close()
 
@@ -39,7 +39,7 @@ func _ready():
 	_screen_shake_toggle.button_pressed = _options.screen_shake
 
 func popup():
-	_window_dialog.popup_centered()
+	_popup_dialog.popup_centered()
 	_invincible_toggle.button_pressed = _options.invincible
 	_screen_shake_toggle.button_pressed = _options.screen_shake
 	
@@ -64,7 +64,7 @@ func _input(event:InputEvent):
 	if event is InputEventKey and event.pressed:
 		var key_event:InputEventKey = event as InputEventKey
 		if key_event.is_action_pressed("ui_cancel"):
-			_window_dialog.hide()
+			_popup_dialog.hide()
 
 func _on_AmbienceVolumeSlider_value_changed(value):
 	_options.ambience_volume = value

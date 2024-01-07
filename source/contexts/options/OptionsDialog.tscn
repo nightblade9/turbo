@@ -1,82 +1,62 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://cvyiewdmy4fmm"]
 
-[ext_resource path="res://contexts/options/OptionsDialog.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://contexts/options/OptionsDialog.gd" id="1"]
 
 [node name="Options" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Window" type="Window" parent="."]
+[node name="PopUp" type="Popup" parent="."]
 process_mode = 3
+size = Vector2i(640, 360)
 visible = true
-offset_right = 651.0
-offset_bottom = 357.0
 exclusive = true
-window_title = "Options!"
 
-[node name="MarginContainer" type="MarginContainer" parent="Window"]
+[node name="MarginContainer" type="MarginContainer" parent="PopUp"]
 offset_right = 632.0
 offset_bottom = 352.0
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_top = 4
 theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 628.0
-offset_bottom = 348.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/MarginContainer"]
+layout_mode = 2
 
-[node name="BgseVolume" type="Label" parent="Window/MarginContainer/VBoxContainer"]
-offset_right = 624.0
-offset_bottom = 39.0
+[node name="BgseVolume" type="Label" parent="PopUp/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Background Ambience Volume"
 
-[node name="AmbienceVolumeSlider" type="HSlider" parent="Window/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 43.0
-offset_right = 624.0
-offset_bottom = 59.0
+[node name="AmbienceVolumeSlider" type="HSlider" parent="PopUp/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
+layout_mode = 2
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
-[node name="SfxVolume" type="Label" parent="Window/MarginContainer/VBoxContainer"]
-offset_top = 63.0
-offset_right = 624.0
-offset_bottom = 102.0
+[node name="SfxVolume" type="Label" parent="PopUp/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Sound Effects Volume"
 
-[node name="SoundEffectsVolumeSlider" type="HSlider" parent="Window/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 106.0
-offset_right = 624.0
-offset_bottom = 122.0
+[node name="SoundEffectsVolumeSlider" type="HSlider" parent="PopUp/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
+layout_mode = 2
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
-[node name="HSeparator" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
-offset_top = 126.0
-offset_right = 624.0
-offset_bottom = 130.0
+[node name="HSeparator" type="HSeparator" parent="PopUp/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="InvincibilityCheck" type="CheckButton" parent="Window/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 134.0
-offset_right = 624.0
-offset_bottom = 181.0
+[node name="InvincibilityCheck" type="CheckButton" parent="PopUp/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
+layout_mode = 2
 text = "Invincibility"
 
-[node name="ScreenShakeCheck" type="CheckButton" parent="Window/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 185.0
-offset_right = 624.0
-offset_bottom = 232.0
-pressed = true
+[node name="ScreenShakeCheck" type="CheckButton" parent="PopUp/MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
+layout_mode = 2
 text = "Screen Shake"
 
-[connection signal="popup_hide" from="Window" to="." method="_on_WindowDialog_popup_hide"]
-[connection signal="value_changed" from="Window/MarginContainer/VBoxContainer/AmbienceVolumeSlider" to="." method="_on_AmbienceVolumeSlider_value_changed"]
-[connection signal="value_changed" from="Window/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider" to="." method="_on_SoundEffectsVolumeSlider_value_changed"]
-[connection signal="toggled" from="Window/MarginContainer/VBoxContainer/InvincibilityCheck" to="." method="_on_InvincibilityCheck_toggled"]
-[connection signal="toggled" from="Window/MarginContainer/VBoxContainer/ScreenShakeCheck" to="." method="_on_ScreenShakeCheck_toggled"]
+[connection signal="value_changed" from="PopUp/MarginContainer/VBoxContainer/AmbienceVolumeSlider" to="." method="_on_AmbienceVolumeSlider_value_changed"]
+[connection signal="value_changed" from="PopUp/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider" to="." method="_on_SoundEffectsVolumeSlider_value_changed"]
+[connection signal="toggled" from="PopUp/MarginContainer/VBoxContainer/InvincibilityCheck" to="." method="_on_InvincibilityCheck_toggled"]
+[connection signal="toggled" from="PopUp/MarginContainer/VBoxContainer/ScreenShakeCheck" to="." method="_on_ScreenShakeCheck_toggled"]
