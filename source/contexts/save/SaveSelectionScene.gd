@@ -16,6 +16,11 @@ func _ready():
 
 		var game_data:SaveData = SaveData.load_data(slot)
 		save_slot.initialize(slot, game_data)
+		save_slot.load_game.connect(_on_load_game)
 	
 func _on_back_to_title_button_pressed():
 	FancyFade.cross_fade(TitleScene.instantiate())
+
+func _on_load_game(save_data:SaveData) -> void:
+	# Load the game!
+	pass

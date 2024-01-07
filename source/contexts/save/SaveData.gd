@@ -1,3 +1,4 @@
+class_name SaveData
 extends Resource
 
 const _SAVE_FILE_NAME = "user://save%s.tres"

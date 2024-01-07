@@ -1,5 +1,7 @@
 extends TextureRect
 
+signal load_game(data)
+
 const SaveData = preload("res://contexts/save/SaveData.gd")
 
 const _GAME_TIME_LABEL:String = "%s hour(s), %s minute(s)"
@@ -9,8 +11,11 @@ const _GAME_TIME_LABEL:String = "%s hour(s), %s minute(s)"
 @onready var _time_label = $MarginContainer/VBoxContainer/TimeLabel
 @onready var _load_button = $MarginContainer/VBoxContainer/HBoxContainer/LoadButton 
 
+var _save_data:SaveData
+
 # Called after _ready
 func initialize(save_slot:String, save_data:SaveData) -> void:
+	_save_data = save_data
 	_slot_label.text = "Slot %s" % str(save_slot)
 	
 	if save_data != null:
@@ -24,3 +29,6 @@ func initialize(save_slot:String, save_data:SaveData) -> void:
 		_main_label.text = "Empty"
 		_time_label.visible = false
 		_load_button.visible = false
+
+func _on_load_button_pressed():
+	load_game.emit(_save_data)
