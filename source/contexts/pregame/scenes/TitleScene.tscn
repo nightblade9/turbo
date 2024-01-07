@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://djfu3y1bixylw"]
+[gd_scene load_steps=5 format=3 uid="uid://djfu3y1bixylw"]
 
 [ext_resource type="Texture2D" uid="uid://ba5j211j53x8v" path="res://assets/images/ui/title-image.png" id="1"]
 [ext_resource type="FontFile" path="res://theme/HeadingsFont.tres" id="2"]
 [ext_resource type="Script" path="res://contexts/pregame/scenes/TitleScene.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bmm16sxc4md27" path="res://icon.png" id="4_vethj"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -56,6 +59,10 @@ text = "Continue"
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
 layout_mode = 2
 text = "Options"
+
+[node name="GamePauseCheck" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(632, 66)
+texture = ExtResource("4_vethj")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

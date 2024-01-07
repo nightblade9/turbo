@@ -53,11 +53,6 @@ func _on_InvincibilityCheck_toggled(button_pressed:bool):
 func _on_ScreenShakeCheck_toggled(button_pressed:bool):
 	_options.screen_shake = button_pressed
 	_options.save_data()
-	
-func _on_WindowDialog_popup_hide():
-	emit_signal("close")
-	# resume game
-	get_tree().paused = false
 
 # Close on ESC
 func _input(event:InputEvent):
@@ -92,3 +87,8 @@ func _update_volume_uis():
 func update_audio_volume(bus_name:String, value:float):
 	var decibels = linear_to_db(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), decibels)
+
+func _on_pop_up_popup_hide():
+	emit_signal("close")
+	# resume game
+	get_tree().paused = false

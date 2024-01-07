@@ -56,6 +56,7 @@ text = "Invincibility"
 layout_mode = 2
 text = "Screen Shake"
 
+[connection signal="popup_hide" from="PopUp" to="." method="_on_pop_up_popup_hide"]
 [connection signal="value_changed" from="PopUp/MarginContainer/VBoxContainer/AmbienceVolumeSlider" to="." method="_on_AmbienceVolumeSlider_value_changed"]
 [connection signal="value_changed" from="PopUp/MarginContainer/VBoxContainer/SoundEffectsVolumeSlider" to="." method="_on_SoundEffectsVolumeSlider_value_changed"]
 [connection signal="toggled" from="PopUp/MarginContainer/VBoxContainer/InvincibilityCheck" to="." method="_on_InvincibilityCheck_toggled"]
