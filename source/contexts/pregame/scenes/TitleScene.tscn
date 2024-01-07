@@ -1,71 +1,60 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://djfu3y1bixylw"]
 
-[ext_resource path="res://assets/images/ui/title-image.png" type="Texture2D" id=1]
-[ext_resource path="res://theme/HeadingsFont.tres" type="FontFile" id=2]
-[ext_resource path="res://contexts/pregame/scenes/TitleScene.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://ba5j211j53x8v" path="res://assets/images/ui/title-image.png" id="1"]
+[ext_resource type="FontFile" path="res://theme/HeadingsFont.tres" id="2"]
+[ext_resource type="Script" path="res://contexts/pregame/scenes/TitleScene.gd" id="3"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_top = 16
 theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1264.0
-offset_bottom = 704.0
+layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_top = 83.0
-offset_right = 1248.0
-offset_bottom = 182.0
-theme_override_fonts/font = ExtResource( 2 )
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2")
 text = "Super Awesome Game"
-align = 1
-valign = 1
+horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 190.0
-offset_right = 1248.0
-offset_bottom = 446.0
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
-offset_left = 496.0
-offset_right = 752.0
-offset_bottom = 256.0
-texture = ExtResource( 1 )
+layout_mode = 2
+texture = ExtResource("1")
 
 [node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 454.0
-offset_right = 1248.0
-offset_bottom = 499.0
+layout_mode = 2
 text = "New Game"
 
 [node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 507.0
-offset_right = 1248.0
-offset_bottom = 552.0
+layout_mode = 2
 text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
-offset_top = 560.0
-offset_right = 1248.0
-offset_bottom = 605.0
+layout_mode = 2
 text = "Options"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
