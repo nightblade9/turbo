@@ -94,6 +94,4 @@ func _on_pop_up_popup_hide():
 	get_tree().paused = false
 
 func _on_close_button_pressed():
-	_on_pop_up_popup_hide()
-	get_parent().remove_child(self)
-	self.queue_free()
+	_popup_dialog.hide()
