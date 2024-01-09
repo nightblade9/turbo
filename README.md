@@ -1,4 +1,4 @@
-# Turbo
+# ⚡ Turbo
 
 "Batteries-included" template Godot project for 2D pixel-art web (and desktop) Godot games. Includes:
 
@@ -13,7 +13,7 @@
 
 Current project template is for Godot v4.x!
 
-# Usage
+# 📖 Usage
 
 The intended workflow is to use Turbo to quickly prototype your game, publish to HTML5, market it, and iterate. This is why it includes all the fixings to make a "full-fledged" game, including title screen, saving support, etc.
 
@@ -27,9 +27,13 @@ In general, you want to clone the project, and use that as your starting-point, 
 - For the fade image, pick any of the filenames out of `addons/transitions/images` and specify the filename, e.g. `swirl`. For more options, including custom images, see the [Godot Fancy Scene Changes repo](https://github.com/nightblade9/godot-fancy-scene-changes)
 - If you want to execute some logic before the `_ready` function on the new scene is called, add an `func initialize(params:Dictionary = {})` method to it, and call `SceneManager.change_scene_to(packed_scene, {... params go here ...})`, passing in the dictionary of parameters.
 
-# Limitations
+# ⚠️ Limitations
 
 ## Display ##
 
 - The template window size is 720p; this allows for relatively safe deployment to HTML5 (in terms of user resolution). To better support desktop and console platforms, you can update it to 1080p or 540p (with scaling) at any time. 
 - To make the resolution change as seamless as possible, use `anchor` properties and `Control` nodes to position HUD elements
+
+# 🔧 Contributing
+
+Contributions welcome! Please open an issue to discuss what kind of changes you have in mind, and/or open a PR with things working! Our goal is to make this as "batteries-included" as possible, while not becoming over-bloated or full of genre-specific or game-specific features.
