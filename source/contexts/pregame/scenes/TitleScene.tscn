@@ -59,6 +59,11 @@ text = "Continue"
 layout_mode = 2
 text = "Options"
 
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["GamepadSelectable"]]
+layout_mode = 2
+text = "Exit"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

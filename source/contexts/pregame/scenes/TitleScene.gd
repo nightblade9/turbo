@@ -19,3 +19,14 @@ func _on_NewGameButton_pressed():
 	
 func _on_ContinueButton_pressed():
 	FancyFade.cross_fade(SaveSelectionScene.instantiate())
+
+
+func _on_exit_button_pressed():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color(0, 0, 0, 1), 1)
+	tween.finished.connect(_on_exit)
+
+func _on_exit():
+	var tree = get_tree()
+	tree.root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST) # tell nodes we're quitting
+	tree.quit()
