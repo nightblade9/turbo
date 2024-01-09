@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+const CloseOnEscape = preload("res://scripts/CloseOnEscape.gd")
 const GamepadNavigator = preload("res://scripts/GamepadNavigator.gd")
 const Options = preload("res://contexts/options/Options.gd")
 
@@ -56,10 +57,7 @@ func _on_ScreenShakeCheck_toggled(button_pressed:bool):
 
 # Close on ESC
 func _input(event:InputEvent):
-	if event is InputEventKey and event.pressed:
-		var key_event:InputEventKey = event as InputEventKey
-		if key_event.is_action_pressed("ui_cancel"):
-			_popup_dialog.hide()
+	CloseOnEscape.on_input(event, func(): _popup_dialog.hide())
 
 func _on_AmbienceVolumeSlider_value_changed(value):
 	_options.ambience_volume = value
