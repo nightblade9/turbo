@@ -1,13 +1,16 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://6w7q2lxkpxxw"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://6w7q2lxkpxxw"]
 
 [ext_resource type="Texture2D" uid="uid://s8pvllfxx6kb" path="res://assets/images/ui/hslider-grabber.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://rwq460bqn5fx" path="res://assets/images/ui/hslider-grabber-selected.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cchbj4eo8gny5" path="res://assets/images/ui/hslider-grabber-disabled.png" id="3"]
+[ext_resource type="FontFile" path="res://theme/DefaultFont.tres" id="4_e7wu5"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.24, 0.48, 0.6, 1)
 
 [resource]
+default_font = ExtResource("4_e7wu5")
+default_font_size = 24
 Button/styles/focus = SubResource("1")
 CheckButton/styles/focus = SubResource("1")
 HSlider/icons/grabber = ExtResource("1")
